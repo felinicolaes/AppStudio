@@ -1,0 +1,29 @@
+Introduction to Design
+
+App: 'Keep' van Google
+    What gap in the user experience can you infer from the app’s functionality? Define this gap or problem very precisely. Is this problem uniquely solved by a mobile app? Or are there websites that provide a solution to the same problem? In other words, what is the added value of providing it as an app?
+Keep is an application developed by Google where you can add notes. The notes you make are also accessible on a website.
+The gap in user experience is the fact that people often have things they need to remember: grocery lists, telephone numbers, to-do-lists etc. Normally, people will write these things down on a piece of paper, but paper is easy to lose. People can also write this down in their planner, but then the information is not available if they do not have their planner with them.
+A phone is something a big part of the population always carries with them, so this is why an app is a good place to store this information. There are a lot of websites that provide solutions to the same problem. The added value of providing an app is that notes often need to be written down very fast, so then an app is easier to use. The only thing is that everything you can do on this app, can also be done on google drive in some way...
+
+
+    Do you think the designer really understands the problem? What are clues in the app’s functionality to evidence presence or absence of understanding?
+I think the designer understands the problem, because the app can save different kinds of notes: lists, 'normal' text, pictures and voice recordings. The notes can also be given labels to organize them into different categories, so that it is easy to find the right note within a short period of time. An alarm can also be set, so that you will get a reminder to do something at a certain time. This can be useful if you don't have the habit of checking this app regularly.
+The app can also be synced to a website so that you can access your notes from a website, so that you can access them even if you don't have your phone near.
+
+
+    What market segments can you define for this app? In other words, does it serve different kinds of people? Which are these?
+Market segments for this app can be everyone who uses a phone and wants to remember things. I think it mostly attracts people who have an online planner or do not carry their planner everywhere, since this group is most likely to not write these notes in their planner.
+Another market segment is people who have an android phone, but also a laptop, tablet etc. This is because of the option to sync with keep.google.com
+The app is only available via android (it does not have an iOs version) and it uses a google account, which means it will mostly be used by people who also use other google-services and have an android phone (which is still a lot of potential users).
+
+
+    List examples of needs that could be fulfilled for different market segments served by this app. Have a look at competing apps to come up with needs that may not be fulfilled by the app you chose.
+- Having an iOs app or desktop application. This need is covered by apps like Evernote and OneNote. (market segment = users who have more than an android phone)
+- Sharing notes. This need is covered by almost all apps in some way. (market segment = users who have more than an android phone or need to share grocery lists etc.)
+- Free app. Evernote and OneNote have free starter accounts, but if you use it a lot, you have to buy a premium account. (market segment = everyone who does not have unlimited money)
+- Easy sign-in. You often have to make a new account for apps that sync their notes to a website, but most people already have a google-account. (market segment = everyone)
+
+
+    Prepare and submit one discussion question about the chapters above. We will discuss some of these in class.
+Is it possible to design an app that will still be used in a few years? This because the design people like often changes over time.
