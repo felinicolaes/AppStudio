@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Eerste App</string>
+
+    <string name="welcome">Welkom, hoe heet jij?!</string>
+    <string name="button">Enter</string>
+    <string name="button2">Maak achtergrond rood</string>
+    <string name="button3">Maak achtergrond blauw</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint">Jouw naam</string>
+
+</resources>
