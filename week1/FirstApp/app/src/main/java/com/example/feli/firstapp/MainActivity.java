@@ -1,3 +1,9 @@
+/* First app, Feli Nicolaes <feli.nicolaes@student.uva.nl>
+ * You can type in your name and it will remember it. You can also change the 
+ * background color of the app.
+ */
+
+
 package com.example.feli.firstapp;
 
 import android.app.Activity;
@@ -18,6 +24,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button thirdButton;
     EditText mainEditText;
 
+	/* 
+	 * Creates the main frame with five widgets
+	 */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,23 +52,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return true;
     }
 
-
+	/* 
+	 * Contains the actions for the different buttons
+	 */
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
+			// Your name will be remembered if you type it in the EditText widget
             case R.id.main_button:
-                mainTextView.setText(mainEditText.getText().toString()
-                    + " kan typen!");
+                mainTextView.setText("Welkom, " + mainEditText.getText().toString());
                 break;
 
+			// The backgroundcolor will change to red
             case R.id.second_button:
                 getWindow().getDecorView().setBackgroundColor(Color.RED);
                 break;
 
+			// The backgroundcolor will change to blue
             case R.id.third_button:
                 getWindow().getDecorView().setBackgroundColor(Color.BLUE);
                 break;
-
         }
     }
 }
