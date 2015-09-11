@@ -50,6 +50,4 @@
         android:background="#0000ff"
         android:layout_centerHorizontal="true"/>
 
-
-
 </RelativeLayout>
