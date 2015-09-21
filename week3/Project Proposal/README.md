@@ -6,7 +6,7 @@ The ghost app will provide a way to play the game Ghost. Ghost is a word game in
 Features:
 - Ghost game is fully playable
 - Game can be played in two different languages
-- Players will both have names, which can be chosen out of a list of previously added names or can be typed in
+- Game will save all names and will play with these names if no other names are entered. Names can be chosen out of a list of previously added names or can be typed in
 - A high score list will count and save all the scores from this game as well as all the others
 
 ![First four sketches](https://github.com/felinicolaes/AppStudio/blob/master/week3/Project%20Proposal/ghost1.jpg)
