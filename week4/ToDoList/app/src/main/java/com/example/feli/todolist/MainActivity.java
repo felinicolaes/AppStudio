@@ -3,6 +3,7 @@ package com.example.feli.todolist;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getBeginPreferences();
         addToDo = (EditText) findViewById(R.id.editText);
-
         items = new ArrayList<String>();
 
         makeList();
@@ -43,15 +46,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        saveBeginPreferences();
+        getBeginPreferences();
+    }
+
+    public void addToBeginPreferences(String text) {
+        try {
+            PrintStream out = new PrintStream(openFileOutput("items.txt", MODE_PRIVATE));
+            for (int i=0; i<items.size(); i++) {
+                out.println(items.get(i));
+            }
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void getBeginPreferences() {
-
-    }
-
-    public void saveBeginPreferences() {
-
+        try {
+            Scanner scan = new Scanner(openFileInput("items.txt"));
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                items.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void makeList() {
@@ -61,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-
     public void clickAdd(View view) {
         if (!addToDo.getText().toString().equals("")) {
             items.add(addToDo.getText().toString());
             makeList();
             hideKeyboard();
+            addToBeginPreferences(addToDo.getText().toString());
             addToDo.setText("");
         }
     }
@@ -87,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -106,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
