@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         getBeginPreferences();
     }
 
-    public void addToBeginPreferences(String text) {
+    public void addToBeginPreferences() {
         try {
             PrintStream out = new PrintStream(openFileOutput("items.txt", MODE_PRIVATE));
             for (int i=0; i<items.size(); i++) {
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             items.add(addToDo.getText().toString());
             makeList();
             hideKeyboard();
-            addToBeginPreferences(addToDo.getText().toString());
+            addToBeginPreferences();
             addToDo.setText("");
         }
     }
@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     public void deleteItem(int i) {
         items.remove(i);
         makeList();
+		addToBeginPreferences();
         Toast.makeText(getApplicationContext(), "Item removed", Toast.LENGTH_LONG).show();
     }
 
