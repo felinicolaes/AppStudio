@@ -23,7 +23,7 @@ This page gives the user the chance to make a new player (using an imagebutton a
 ![chooseIcon](https://github.com/felinicolaes/AppStudio/blob/master/Project/doc/chooseIcon.png) <br \>
 When making a new player, the user can choose an icon to go with the player name (using a grid with imagebuttons).
 
-![pickPlayer](https://github.com/felinicolaes/AppStudio/blob/master/Project/doc/players.png) <br \>
+![pickPlayer](https://github.com/felinicolaes/AppStudio/blob/master/Project/doc/pickPlayer.png) <br \>
 This is a list with all the previously made players and their icons (using a scollable list with images and textviews).
 
 ![mainGame](https://github.com/felinicolaes/AppStudio/blob/master/Project/doc/mainGame.png) <br \>
