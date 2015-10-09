@@ -1,58 +1,46 @@
 package com.example.feli.ghost;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-public class MainMenu extends AppCompatActivity {
+public class WinScreen extends AppCompatActivity {
+    String[] players;
+    String sourcePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_win_screen);
+
+        Bundle extras = getIntent().getExtras();
+        String endReason = extras.getString("endReason");
+        String winningPlayer = extras.getString("winnerName");
+        sourcePath = extras.getString("sourcePath");
+        players = extras.getStringArray("playerArray");
+
+        TextView winner = (TextView) findViewById(R.id.winner);
+        TextView reason = (TextView) findViewById(R.id.reason);
+
+        winner.setText(winningPlayer + " won,");
+        reason.setText("because " + endReason);
+
+        System.out.println("sourcepath winscreen " + sourcePath);
     }
 
-    /*
-     * Create buttons
-     */
-    public void resumeButton(View view) {
-        Intent i = new Intent(this, MainGame.class);
-        startActivity(i);
-    }
-
-    public void playButton(View view) {
-        Intent i = new Intent(this, PickPlayer.class);
-        startActivity(i);
-    }
-
-    public void howToButton(View view) {
-        Intent i = new Intent(this, HowTo.class);
-        startActivity(i);
-    }
-
-    public void highscoresButton(View view) {
+    public void scoresButton(View view) {
         Intent i = new Intent(this, Highscores.class);
         startActivity(i);
     }
 
-    /*
-     * Create options menu
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_win_screen, menu);
         return true;
     }
 

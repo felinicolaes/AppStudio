@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Ghost</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_main_game">MainGame</string>
+    <string name="title_activity_how_to">howTo</string>
+    <string name="title_activity_highscores">highscores</string>
+    <string name="title_activity_pick_player">PickPlayer</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_win_screen">winScreen</string>
+    <string name="howToString"> This game is played by 2 people. The goal of the game is to make a string of letters that is the start of a word, but not a whole word with 4 or more letters.
+        The players first enter their names. After this, the players can take turns in entering one letter.
+        As said before, the string of letters always have to be a possible beginning of a word, but not a whole word with 4 or more letters. The game can be played with either a Dutch or English lexicon.
+        If the string is 4 letters long when the game ends, the winner wins 4 points.</string>
+    <string name="title_activity_get_old_player">GetOldPlayer</string>
 </resources>

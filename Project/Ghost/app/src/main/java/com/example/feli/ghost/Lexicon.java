@@ -26,7 +26,7 @@ public class Lexicon {
 
     Lexicon(String sourcePath, Context myContext) {
         try {
-            InputStream IStream = myContext.getAssets().open("tinydutch.txt");
+            InputStream IStream = myContext.getAssets().open(sourcePath);
             InputStreamReader IStreamReader = new InputStreamReader(IStream);
             BufferedReader bReader = new BufferedReader(IStreamReader);
             lexiconHash = new HashSet<>();
@@ -38,9 +38,7 @@ public class Lexicon {
             IStream.close();
             IStreamReader.close();
             bReader.close();
-            System.out.println("dingen doen het misschien?");
         } catch (IOException e) {
-            System.out.println("bam alles kapot");
             e.printStackTrace();
         }
 
@@ -58,30 +56,14 @@ public class Lexicon {
 
     public void filter(String input) {
         System.out.println("begin filter");
-    /*    if (input.length() < 4) {
-            reset();
-            System.out.println("lexiconcopy size: " + lexiconCopy.size());
-            System.out.println("lexiconhash size: " + lexiconHash.size());
-            for (it = lexiconCopy.iterator(); it.hasNext();) {
-                String word = it.next();
-                System.out.println("check " + word);
-                if (!word.startsWith(input)) {
-                    lexiconHash.remove(word);
-                    System.out.println("remove " + word);
-                }
-            }
-            System.out.println("test <4 " + lexiconHash.size());
-        } else { */
             lexiconHash = new HashSet<String>();
             for (it = lexiconCopy.iterator(); it.hasNext();) {
                 String word = it.next();
                 if (word.startsWith(input)) {
                     lexiconHash.add(word);
-                    System.out.println("test " + word);
                 }
             }
-        System.out.println("test >3 " + lexiconHash.size());
-    //    }
+        System.out.println("lexiconHash size is " + lexiconHash.size());
     }
 
     public int count() {
@@ -98,6 +80,8 @@ public class Lexicon {
 
     public void reset() {
         lexiconHash = lexiconCopy;
+        System.out.println("copy size = " + lexiconCopy.size());
+        System.out.println("hash size = " + lexiconHash.size());
     }
 
     public Set<String> getHash() {

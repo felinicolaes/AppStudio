@@ -1,49 +1,31 @@
 package com.example.feli.ghost;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-public class MainMenu extends AppCompatActivity {
+public class HowTo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_how_to);
     }
 
     /*
      * Create buttons
      */
-    public void resumeButton(View view) {
-        Intent i = new Intent(this, MainGame.class);
-        startActivity(i);
+    public void backToMenuButton(View view) {
+        Intent i = new Intent(HowTo.this, MainMenu.class);
+        HowTo.this.startActivity(i);
     }
 
     public void playButton(View view) {
-        Intent i = new Intent(this, PickPlayer.class);
-        startActivity(i);
-    }
-
-    public void howToButton(View view) {
-        Intent i = new Intent(this, HowTo.class);
-        startActivity(i);
-    }
-
-    public void highscoresButton(View view) {
-        Intent i = new Intent(this, Highscores.class);
-        startActivity(i);
+        Intent i = new Intent(HowTo.this, MainGame.class);
+        HowTo.this.startActivity(i);
     }
 
     /*
@@ -52,7 +34,7 @@ public class MainMenu extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_how_to, menu);
         return true;
     }
 
