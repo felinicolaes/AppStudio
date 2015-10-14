@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Resume Game"
             android:id="@+id/resumeGame"
-            android:layout_margin="50px"
+            android:layout_margin="15dp"
             android:elegantTextHeight="false"
             android:textSize="20dp"
             android:onClick="resumeButton"/>
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="New Game"
             android:id="@+id/playGame"
-            android:layout_margin="50px"
+            android:layout_margin="15dp"
             android:elegantTextHeight="false"
             android:textSize="20dp"
             android:onClick="playButton"/>
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="How To"
             android:id="@+id/howTo"
-            android:layout_margin="50px"
+            android:layout_margin="15dp"
             android:textSize="20dp"
             android:onClick="howToButton"/>
 
@@ -46,9 +46,17 @@
             android:layout_height="wrap_content"
             android:text="Highscores"
             android:id="@+id/highScores"
-            android:layout_margin="50px"
+            android:layout_margin="15dp"
             android:textSize="20dp"
             android:onClick="highscoresButton"/>
+
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:id="@+id/ghost"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

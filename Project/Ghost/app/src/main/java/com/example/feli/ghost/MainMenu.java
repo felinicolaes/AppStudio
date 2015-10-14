@@ -1,49 +1,57 @@
 package com.example.feli.ghost;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
+/**
+ * MainMenu Activity starts a screen where the player can choose what to do
+ */
 public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        ImageView logoImg = (ImageView) findViewById(R.id.ghost);
+        logoImg.setImageResource(R.drawable.ghost);
+
+        //set the resume-button invisible if no previous games are found
+        SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
+        if (settings.getString("name0", "").equals("")) {
+            Button resumeButton = (Button) findViewById(R.id.resumeGame);
+            resumeButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     /*
      * Create buttons
      */
     public void resumeButton(View view) {
-        Intent i = new Intent(this, MainGame.class);
-        startActivity(i);
+        Intent mainGameIntent = new Intent(this, MainGame.class);
+        startActivity(mainGameIntent);
     }
 
     public void playButton(View view) {
-        Intent i = new Intent(this, PickPlayer.class);
-        startActivity(i);
+        Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
+        startActivity(pickPlayerIntent);
     }
 
     public void howToButton(View view) {
-        Intent i = new Intent(this, HowTo.class);
-        startActivity(i);
+        Intent howToIntent = new Intent(this, HowTo.class);
+        startActivity(howToIntent);
     }
 
     public void highscoresButton(View view) {
-        Intent i = new Intent(this, Highscores.class);
-        startActivity(i);
+        Intent highscoresIntent = new Intent(this, Highscores.class);
+        startActivity(highscoresIntent);
     }
 
     /*

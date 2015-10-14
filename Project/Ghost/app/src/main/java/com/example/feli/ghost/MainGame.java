@@ -1,30 +1,27 @@
 package com.example.feli.ghost;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Map;
 
+/**
+ * MainGame Activity starts a screen where the game is played
+ */
 public class MainGame extends AppCompatActivity {
-    public static final String PreferencesName = "MyPrefsFile";
-    EditText guessString;
-    TextView guessesString, playerName;
-    String guesses, sourcePath;
-    Game newGame;
-    Lexicon lexicon;
-    Boolean turn;
-    String[] currentPlayers = new String[2];
+    private EditText guessString;
+    private TextView guessesString, playerName;
+    private String guesses, sourcePath;
+    private Game newGame;
+    private Boolean turn;
+    private String[] currentPlayers = new String[2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,48 +32,26 @@ public class MainGame extends AppCompatActivity {
         guessString = (EditText) findViewById(R.id.guess);
         playerName = (TextView) findViewById(R.id.playerName);
 
-        getBundleExtras();
+        getOldPreferences();
 
-        lexicon = new Lexicon(sourcePath, this.getApplicationContext());
+        Lexicon lexicon = new Lexicon(sourcePath, this.getApplicationContext());
         newGame = new Game(lexicon);
-
         newGame.setTurn(turn);
         newGame.setGuesses(guesses);
 
         updateTurn();
     }
 
-    public void getBundleExtras() {
-        Bundle extras = getIntent().getExtras();
-
-        if (extras != null) {
-            sourcePath = extras.getString("sourcePath");
-            currentPlayers = extras.getStringArray("playerArray");
-            guesses = "";
-            turn = false;
-        } else {
-            getOldPreferences();
-        }
-    }
-
     public void getOldPreferences() {
-        SharedPreferences settings = getSharedPreferences(PreferencesName, 0);
+        SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         sourcePath = settings.getString("sourcePath", "dutch.txt");
-        currentPlayers[0] = settings.getString("name0", "Jantje");
+        currentPlayers[0] = settings.getString("name0", "Jantjedepantje");
         currentPlayers[1] = settings.getString("name1", "Pietje");
         guesses = settings.getString("guesses", "");
         turn = settings.getBoolean("turn", false);
         guessesString.setText(guesses);
-        if (currentPlayers[0].equals("Jantje")) {
+        if (currentPlayers[0].equals("Jantjedepantje")) {
             Toast.makeText(getApplicationContext(), "No previous games found, so example game is started", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void addButton(View view) {
-        if (guessString.getText().toString().length() == 1) {
-            oneTurn();
-        } else {
-            Toast.makeText(getApplicationContext(), "Please only add 1 letter", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -103,12 +78,10 @@ public class MainGame extends AppCompatActivity {
         String reason = newGame.endReason();
         addScore(winner);
         guesses = "";
-        Intent i = new Intent(this, WinScreen.class);
-        i.putExtra("winnerName", winner);
-        i.putExtra("playerArray", currentPlayers);
-        i.putExtra("endReason", reason);
-        i.putExtra("sourcePath", sourcePath);
-        startActivity(i);
+        Intent winScreenIntent = new Intent(this, WinScreen.class);
+        winScreenIntent.putExtra("winnerName", winner);
+        winScreenIntent.putExtra("endReason", reason);
+        startActivity(winScreenIntent);
     }
 
     public void addScore(String winner) {
@@ -129,12 +102,11 @@ public class MainGame extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
-
         savePreferences();
     }
 
     public void savePreferences() {
-        SharedPreferences settings = getSharedPreferences(PreferencesName, 0);
+        SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("sourcePath", sourcePath);
         editor.putString("name0", currentPlayers[0]);
@@ -145,11 +117,25 @@ public class MainGame extends AppCompatActivity {
         editor.commit();
     }
 
-    public void menuButton(View view) {
-        Intent i = new Intent(this, MainMenu.class);
-        startActivity(i);
+    /*
+     * Create buttons
+     */
+    public void addButton(View view) {
+        if (guessString.getText().toString().length() == 1) {
+            oneTurn();
+        } else {
+            Toast.makeText(getApplicationContext(), "Please only add 1 letter", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    public void menuButton(View view) {
+        Intent mainMenuIntent = new Intent(this, MainMenu.class);
+        startActivity(mainMenuIntent);
+    }
+
+    /*
+     * Create options menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

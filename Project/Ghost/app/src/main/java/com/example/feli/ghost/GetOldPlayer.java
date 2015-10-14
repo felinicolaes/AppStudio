@@ -9,16 +9,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * GetOldPlayer Activity starts a screen where the player can choose a player from a list with
+ * previous players
+ */
 public class GetOldPlayer extends AppCompatActivity {
-    ArrayList<Player> allPlayers = new ArrayList<Player>();
-    ArrayList<String> allNames = new ArrayList<String>();
-    int player;
-    String name;
+    private ArrayList<Player> allPlayers = new ArrayList<>();
+    private ArrayList<String> allNames = new ArrayList<>();
+    private int player;
+    private String otherPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +31,13 @@ public class GetOldPlayer extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         player = extras.getInt("player");
+        otherPlayer = extras.getString("otherPlayer");
 
         getAllPlayers();
         makeNamesList();
 
-        name = "Klaas";
+        ImageView playerImg = (ImageView) findViewById(R.id.players);
+        playerImg.setImageResource(R.drawable.players);
     }
 
     public void makeNamesList() {
@@ -43,7 +49,7 @@ public class GetOldPlayer extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pickPlayer(position);
+                choosePlayer(position);
             }
         });
     }
@@ -57,32 +63,35 @@ public class GetOldPlayer extends AppCompatActivity {
                     !entry.getKey().equals("guesses") && !entry.getKey().equals("turn")) {
                 Player p = new Player(entry.getKey(), (Integer) entry.getValue());
                 allPlayers.add(p);
-                String name = entry.getKey() + ", score: " + (Integer) entry.getValue();
+                String name = entry.getKey() + ", score: " + entry.getValue();
                 allNames.add(name);
             }
         }
     }
 
-    public void pickPlayer(int position) {
+    public void choosePlayer(int position) {
         Player p = allPlayers.get(position);
-        Intent i = new Intent(this, PickPlayer.class);
-        i.putExtra("player", player);
-        i.putExtra("name", p.getName());
-        startActivity(i);
+        Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
+        pickPlayerIntent.putExtra("player", player);
+        pickPlayerIntent.putExtra("otherPlayer", otherPlayer);
+        pickPlayerIntent.putExtra("score", p.getScore());
+        pickPlayerIntent.putExtra("name", p.getName());
+        startActivity(pickPlayerIntent);
     }
 
-  /*  public void chooseButton(View view) {
-        Intent i = new Intent(this, PickPlayer.class);
-        i.putExtra("player", player);
-        i.putExtra("name", name);
-        startActivity(i);
-    } */
-
+    /*
+     * Create buttons
+     */
     public void backButton(View view) {
-        Intent i = new Intent(this, MainMenu.class);
-        startActivity(i);
+        Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
+        pickPlayerIntent.putExtra("player", player);
+        pickPlayerIntent.putExtra("otherPlayer", otherPlayer);
+        startActivity(pickPlayerIntent);
     }
 
+    /*
+     * Create options menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

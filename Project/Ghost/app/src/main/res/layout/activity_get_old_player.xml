@@ -12,9 +12,15 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="false">
 
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/players"
+            android:layout_gravity="center_horizontal" />
+
         <ListView
             android:layout_width="fill_parent"
-            android:layout_height="400dp"
+            android:layout_height="300dp"
             android:id="@+id/listView"
             android:layout_above="@+id/linearLayout4" />
 

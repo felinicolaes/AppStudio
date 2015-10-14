@@ -6,26 +6,33 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
+/**
+ * HowTo Activity starts a screen where the player can see the rules of the game
+ */
 public class HowTo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_how_to);
+
+        ImageView howToImg = (ImageView) findViewById(R.id.howTo);
+        howToImg.setImageResource(R.drawable.howto);
     }
 
     /*
      * Create buttons
      */
     public void backToMenuButton(View view) {
-        Intent i = new Intent(HowTo.this, MainMenu.class);
-        HowTo.this.startActivity(i);
+        Intent mainMenuIntent = new Intent(HowTo.this, MainMenu.class);
+        HowTo.this.startActivity(mainMenuIntent);
     }
 
     public void playButton(View view) {
-        Intent i = new Intent(HowTo.this, MainGame.class);
-        HowTo.this.startActivity(i);
+        Intent pickPlayerIntent = new Intent(HowTo.this, PickPlayer.class);
+        HowTo.this.startActivity(pickPlayerIntent);
     }
 
     /*

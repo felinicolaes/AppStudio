@@ -13,14 +13,36 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/players"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="reset"
+            android:id="@+id/resetButton"
+            android:layout_gravity="right"
+            android:textSize="10dp"
+            android:onClick="resetButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30dp" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_height="wrap_content">
 
             <EditText
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
@@ -43,18 +65,24 @@
                 android:layout_height="wrap_content"
                 android:text="Get Old"
                 android:id="@+id/old0"
-                android:onClick="oldPlayerButton"
+                android:onClick="getOldPlayerButton"
                 android:textSize="12dp" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen1"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_height="wrap_content">
 
             <EditText
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
@@ -76,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="Get Old"
                 android:id="@+id/old1"
-                android:onClick="oldPlayerButton"
+                android:onClick="getOldPlayerButton"
                 android:textSize="12dp" />
         </LinearLayout>
 

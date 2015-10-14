@@ -6,37 +6,41 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * WinScreen Activity starts a screen where information about the end of the game is showed
+ */
 public class WinScreen extends AppCompatActivity {
-    String[] players;
-    String sourcePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win_screen);
 
-        Bundle extras = getIntent().getExtras();
-        String endReason = extras.getString("endReason");
-        String winningPlayer = extras.getString("winnerName");
-        sourcePath = extras.getString("sourcePath");
-        players = extras.getStringArray("playerArray");
+        ImageView winnerImg = (ImageView) findViewById(R.id.congratulationsImg);
+        winnerImg.setImageResource(R.drawable.congratulations);
 
         TextView winner = (TextView) findViewById(R.id.winner);
         TextView reason = (TextView) findViewById(R.id.reason);
 
-        winner.setText(winningPlayer + " won,");
-        reason.setText("because " + endReason);
-
-        System.out.println("sourcepath winscreen " + sourcePath);
+        Bundle extras = getIntent().getExtras();
+        winner.setText(extras.getString("winnerName") + " won,");
+        reason.setText("because " + extras.getString("endReason"));
     }
 
+    /*
+     * Create buttons
+     */
     public void scoresButton(View view) {
-        Intent i = new Intent(this, Highscores.class);
-        startActivity(i);
+        Intent highscoresIntent = new Intent(this, Highscores.class);
+        startActivity(highscoresIntent);
     }
 
+    /*
+     * Create options menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

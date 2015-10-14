@@ -13,6 +13,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/congratulationsImg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="50dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
