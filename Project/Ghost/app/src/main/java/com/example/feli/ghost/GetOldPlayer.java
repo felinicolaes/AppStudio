@@ -24,6 +24,8 @@ public class GetOldPlayer extends AppCompatActivity {
     private int player;
     private String otherPlayer;
 
+    /* onCreate: Create all text and buttons and get all information for activity to work
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,20 +42,8 @@ public class GetOldPlayer extends AppCompatActivity {
         playerImg.setImageResource(R.drawable.players);
     }
 
-    public void makeNamesList() {
-        ListView listView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,android.R.id.text1, allNames);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                choosePlayer(position);
-            }
-        });
-    }
-
+    /* getAllPlayers: Get and save all previous players from the shared preferences
+     */
     public void getAllPlayers() {
         SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         Map<String, ?> allPrefs = settings.getAll();
@@ -69,6 +59,24 @@ public class GetOldPlayer extends AppCompatActivity {
         }
     }
 
+    /* makeNamesList: Get all previous players from the allNames list and show them in a listview
+     */
+    public void makeNamesList() {
+        ListView listView = (ListView) findViewById(R.id.listView);
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,android.R.id.text1, allNames);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                choosePlayer(position);
+            }
+        });
+    }
+
+    /* choosePlayer: Set all extras and go to the pickPlayer activity
+     */
     public void choosePlayer(int position) {
         Player p = allPlayers.get(position);
         Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
@@ -79,8 +87,7 @@ public class GetOldPlayer extends AppCompatActivity {
         startActivity(pickPlayerIntent);
     }
 
-    /*
-     * Create buttons
+    /* backButton: Set necessary extras and go to the pickPlayer activity
      */
     public void backButton(View view) {
         Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
@@ -89,9 +96,7 @@ public class GetOldPlayer extends AppCompatActivity {
         startActivity(pickPlayerIntent);
     }
 
-    /*
-     * Create options menu
-     */
+    /* * * Create options menu * * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -23,6 +23,8 @@ public class Highscores extends AppCompatActivity {
     private ArrayList<String> allNames = new ArrayList<>();
     private ListView listView;
 
+    /* onCreate: Create all text and buttons and get all information for activity to work
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +39,15 @@ public class Highscores extends AppCompatActivity {
         deleteItem();
     }
 
+    /* getAllPlayers: Get and save all previous players from the shared preferences
+     */
     public void getAllPlayers(SharedPreferences settings) {
         Map<String, ?> allPrefs = settings.getAll();
         allPlayers.clear();
         allNames.clear();
 
         for (Map.Entry<String, ?> entry : allPrefs.entrySet()) {
+            // do not use one of the non-player-values in the shared preferences as a player name
             if (!entry.getKey().equals("sourcePath") && !entry.getKey().equals("name0") && !entry.getKey().equals("name1") &&
                     !entry.getKey().equals("guesses") && !entry.getKey().equals("turn")) {
                 Player p = new Player(entry.getKey(), (Integer) entry.getValue());
@@ -54,6 +59,8 @@ public class Highscores extends AppCompatActivity {
         sortPlayers();
     }
 
+    /* sortPlayers: Sort all players by highscore using bubblesort
+     */
     public void sortPlayers() {
         boolean sorted = true;
         Player tempPlayer;
@@ -76,6 +83,8 @@ public class Highscores extends AppCompatActivity {
         }
     }
 
+    /* makeNamesList: Get all previous players from the allNames list and show them in a listview
+     */
     public void makeNamesList() {
         listView = (ListView) findViewById(R.id.listView);
         ArrayAdapter<String> adapter =
@@ -83,6 +92,8 @@ public class Highscores extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    /* deleteItem: delete an item if a longclick on the listView happens
+     */
     public void deleteItem() {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
@@ -95,27 +106,28 @@ public class Highscores extends AppCompatActivity {
         });
     }
 
-    /*
-     * Create buttons
+    /* againButton: go to the mainGame activity
      */
     public void againButton(View view) {
         Intent mainGameIntent = new Intent(this, MainGame.class);
         startActivity(mainGameIntent);
     }
 
+    /* settingsButton: go to the pickPlayer activity
+     */
     public void settingsButton(View view) {
         Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
         startActivity(pickPlayerIntent);
     }
 
+    /* menuButton: go to the mainMenu activity
+     */
     public void menuButton(View view) {
         Intent mainMenuIntent = new Intent(this, MainMenu.class);
         startActivity(mainMenuIntent);
     }
 
-    /*
-     * Create options menu
-     */
+    /* * * Create options menu * * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

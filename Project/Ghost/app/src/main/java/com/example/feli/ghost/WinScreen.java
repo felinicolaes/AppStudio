@@ -14,6 +14,8 @@ import android.widget.TextView;
  */
 public class WinScreen extends AppCompatActivity {
 
+    /* onCreate: Create all text and buttons and get all information for activity to work.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,17 +32,14 @@ public class WinScreen extends AppCompatActivity {
         reason.setText("because " + extras.getString("endReason"));
     }
 
-    /*
-     * Create buttons
+    /* scoresButton: Go to the highscores activity
      */
     public void scoresButton(View view) {
         Intent highscoresIntent = new Intent(this, Highscores.class);
         startActivity(highscoresIntent);
     }
 
-    /*
-     * Create options menu
-     */
+    /* * * Create options menu * * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

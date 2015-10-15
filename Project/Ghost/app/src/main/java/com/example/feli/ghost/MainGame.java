@@ -23,6 +23,9 @@ public class MainGame extends AppCompatActivity {
     private Boolean turn;
     private String[] currentPlayers = new String[2];
 
+    /* onCreate: Create all text and buttons and get all information for activity to work. Also
+     * set up the game.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,9 @@ public class MainGame extends AppCompatActivity {
         updateTurn();
     }
 
+    /* getOldPreferences: Get the old preferences, so a game can be restarted after quitting the
+     * app
+     */
     public void getOldPreferences() {
         SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         sourcePath = settings.getString("sourcePath", "dutch.txt");
@@ -55,6 +61,26 @@ public class MainGame extends AppCompatActivity {
         }
     }
 
+    /* updateTurn: Update all textViews and editTexts so a new guess can be made
+     */
+    public void updateTurn() {
+        int turn = newGame.turn()? 1 : 0;
+        String currentPlayer = currentPlayers[turn];
+        playerName.setText(currentPlayer);
+    }
+
+    /* addButton: add the guessed letter to the string 'guesses' if it is a legal guess
+     */
+    public void addButton(View view) {
+        if (guessString.getText().toString().length() == 1) {
+            oneTurn();
+        } else {
+            Toast.makeText(getApplicationContext(), "Please only add 1 letter", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /* oneTurn: Update all textViews and editTexts and check if game has not ended yet
+     */
     public void oneTurn() {
         newGame.guess(guessString.getText().toString());
         guesses = guesses + guessString.getText().toString();
@@ -67,12 +93,8 @@ public class MainGame extends AppCompatActivity {
         }
     }
 
-    public void updateTurn() {
-        int turn = newGame.turn()? 1 : 0;
-        String currentPlayer = currentPlayers[turn];
-        playerName.setText(currentPlayer);
-    }
-
+    /* endGame: Get the winner, update their score and go to the winScreen activity
+     */
     public void endGame() {
         String winner = currentPlayers[newGame.winner()? 1 : 0];
         String reason = newGame.endReason();
@@ -84,6 +106,8 @@ public class MainGame extends AppCompatActivity {
         startActivity(winScreenIntent);
     }
 
+    /* addScore: Search for the winner in the shared preferences and update their score
+     */
     public void addScore(String winner) {
         SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         Map<String, ?> allPrefs = settings.getAll();
@@ -99,12 +123,16 @@ public class MainGame extends AppCompatActivity {
         }
     }
 
+    /* onStop: save the preferences if the game is stopped
+     */
     @Override
     protected void onStop(){
         super.onStop();
         savePreferences();
     }
 
+    /* savePreferences: save all necessary preferences for the game to be restarted after quitting
+     */
     public void savePreferences() {
         SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -117,25 +145,14 @@ public class MainGame extends AppCompatActivity {
         editor.commit();
     }
 
-    /*
-     * Create buttons
+    /* menuButton: Go to the mainMenu activity
      */
-    public void addButton(View view) {
-        if (guessString.getText().toString().length() == 1) {
-            oneTurn();
-        } else {
-            Toast.makeText(getApplicationContext(), "Please only add 1 letter", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     public void menuButton(View view) {
         Intent mainMenuIntent = new Intent(this, MainMenu.class);
         startActivity(mainMenuIntent);
     }
 
-    /*
-     * Create options menu
-     */
+    /* * *Create options menu * * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

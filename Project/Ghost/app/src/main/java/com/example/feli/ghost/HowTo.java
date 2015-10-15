@@ -13,6 +13,8 @@ import android.widget.ImageView;
  */
 public class HowTo extends AppCompatActivity {
 
+    /* onCreate: Create all text and buttons and get all information for activity to work
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,22 +24,21 @@ public class HowTo extends AppCompatActivity {
         howToImg.setImageResource(R.drawable.howto);
     }
 
-    /*
-     * Create buttons
+    /* backToMenuButton: go to the mainMenu activity
      */
     public void backToMenuButton(View view) {
         Intent mainMenuIntent = new Intent(HowTo.this, MainMenu.class);
         HowTo.this.startActivity(mainMenuIntent);
     }
 
+    /* playButton: go to the pickPlayer activity
+     */
     public void playButton(View view) {
         Intent pickPlayerIntent = new Intent(HowTo.this, PickPlayer.class);
         HowTo.this.startActivity(pickPlayerIntent);
     }
 
-    /*
-     * Create options menu
-     */
+    /* * * Create options menu * * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

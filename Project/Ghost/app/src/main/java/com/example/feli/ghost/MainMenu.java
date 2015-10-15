@@ -15,6 +15,8 @@ import android.widget.ImageView;
  */
 public class MainMenu extends AppCompatActivity {
 
+    /* onCreate: Create all text and buttons and get all information for activity to work.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,32 +33,35 @@ public class MainMenu extends AppCompatActivity {
         }
     }
 
-    /*
-     * Create buttons
+    /* resumeButton: Go to the mainGame activity
      */
     public void resumeButton(View view) {
         Intent mainGameIntent = new Intent(this, MainGame.class);
         startActivity(mainGameIntent);
     }
 
+    /* playButton: Go to the pickPlayer activity
+     */
     public void playButton(View view) {
         Intent pickPlayerIntent = new Intent(this, PickPlayer.class);
         startActivity(pickPlayerIntent);
     }
 
+    /* howToButton: Go to the howTo activity
+     */
     public void howToButton(View view) {
         Intent howToIntent = new Intent(this, HowTo.class);
         startActivity(howToIntent);
     }
 
+    /* highscoresButton: Go to the highscores activity
+     */
     public void highscoresButton(View view) {
         Intent highscoresIntent = new Intent(this, Highscores.class);
         startActivity(highscoresIntent);
     }
 
-    /*
-     * Create options menu
-     */
+    /* * * Create options menu * * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

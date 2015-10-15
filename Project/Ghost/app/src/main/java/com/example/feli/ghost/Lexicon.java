@@ -18,7 +18,7 @@ public class Lexicon {
     private Set<String> allWords;
     private Iterator<String> it;
 
-    /* Lexicon: creates a hashset with all the necessary words from the specified textfile
+    /* Lexicon: creates a hash set with all the necessary words from the specified text file
      */
     Lexicon(String sourcePath, Context myContext) {
         try {
@@ -47,7 +47,7 @@ public class Lexicon {
         copyHash();
     }
 
-    /* copyHash: copy all words from the original hashset into a new hashset
+    /* copyHash: copy all words from the original hash set into a new hash set
      */
     public void copyHash() {
         remainingWords = new HashSet<>();
@@ -57,7 +57,7 @@ public class Lexicon {
         }
     }
 
-    /* filter: filter the hashset so a hashset only containing words starting with a certain
+    /* filter: filter the hash set so a hash set only containing words starting with a certain
      * beginning is made
      */
     public void filter(String startsWith) {
@@ -70,13 +70,13 @@ public class Lexicon {
         }
     }
 
-    /* count: return the amount of words left in the filtered list
+    /* count: return the amount of words left in the filtered hash set
      */
     public int count() {
         return remainingWords.size();
     }
 
-    /* getHash: return hashset of the filtered list
+    /* getHash: return hash set of the filtered list
      */
     public Set<String> getHash() {
         return remainingWords;
