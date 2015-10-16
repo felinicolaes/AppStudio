@@ -1,6 +1,8 @@
 package com.example.feli.ghost;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * Player Class makes new players and edit/get their information
  */
 public class Player {

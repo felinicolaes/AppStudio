@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * GetOldPlayerActivity Activity starts a screen where the player can choose a player from a list with
  * previous players
  */

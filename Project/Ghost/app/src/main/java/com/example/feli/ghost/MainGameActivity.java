@@ -13,6 +13,8 @@ import android.widget.Toast;
 import java.util.Map;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * MainGameActivity Activity starts a screen where the game is played
  */
 public class MainGameActivity extends AppCompatActivity {

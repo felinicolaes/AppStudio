@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * PickPlayerActivity Activity starts a screen where the player can make new players or go to a screen
  * to choose old ones
  */

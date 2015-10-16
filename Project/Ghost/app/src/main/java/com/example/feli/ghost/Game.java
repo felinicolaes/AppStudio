@@ -1,6 +1,8 @@
 package com.example.feli.ghost;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * Game Class creates a new game and can change the turns etc.
  */
 public class Game {

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * HighscoresActivity Activity starts a screen where the player see the highscores in a list with previous
  * players
  */

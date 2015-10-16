@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * Lexicon Class creates a lexicon using the words from the txt files and the functions to use
  * and filter it
  */

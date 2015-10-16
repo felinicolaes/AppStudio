@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * MainMenuActivity Activity starts a screen where the player can choose what to do
  */
 public class MainMenuActivity extends AppCompatActivity {

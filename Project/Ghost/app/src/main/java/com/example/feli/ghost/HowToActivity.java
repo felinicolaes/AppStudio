@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * HowToActivity Activity starts a screen where the player can see the rules of the game
  */
 public class HowToActivity extends AppCompatActivity {

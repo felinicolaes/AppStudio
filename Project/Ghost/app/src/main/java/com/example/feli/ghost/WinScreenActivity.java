@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * Ghost App - Feli Nicolaes, feli.nicolaes@uva.student.nl
+ *
  * WinScreenActivity Activity starts a screen where information about the end of the game is showed
  */
 public class WinScreenActivity extends AppCompatActivity {
