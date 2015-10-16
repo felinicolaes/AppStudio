@@ -9,37 +9,42 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainMenu"
+            android:name=".MainMenuActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainGame"
-            android:configChanges="orientation|screenSize"
+            android:name=".MainGameActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main_game" >
         </activity>
         <activity
-            android:name=".HowTo"
+            android:name=".HowToActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_how_to" >
         </activity>
         <activity
-            android:name=".Highscores"
+            android:name=".HighscoresActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_highscores" >
         </activity>
         <activity
-            android:name=".PickPlayer"
+            android:name=".PickPlayerActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_pick_player" >
         </activity>
         <activity
-            android:name=".WinScreen"
+            android:name=".WinScreenActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_win_screen" >
         </activity>
         <activity
-            android:name=".GetOldPlayer"
+            android:name=".GetOldPlayerActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_get_old_player" >
         </activity>
     </application>

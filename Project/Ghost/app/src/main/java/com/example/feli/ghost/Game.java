@@ -6,7 +6,7 @@ package com.example.feli.ghost;
 public class Game {
     private Lexicon lexicon;
     private boolean currentPlayer;
-    private String guesses;
+    private String alreadyGuessed;
 
     /* Game: creates a new game with a lexicon
      */
@@ -17,8 +17,8 @@ public class Game {
     /* guess: handles a turn in the game
      */
     public void guess(String input) {
-        guesses = guesses + input;
-        lexicon.filter(guesses);
+        alreadyGuessed = alreadyGuessed + input;
+        lexicon.filter(alreadyGuessed);
         currentPlayer = !currentPlayer;
     }
 
@@ -31,7 +31,7 @@ public class Game {
     /* ended: returns 'true' if the game has ended
      */
     public boolean ended() {
-        if (lexicon.count() == 0 || (guesses.length() > 3 && lexicon.getHash().contains(guesses))) {
+        if (lexicon.count() == 0 || (alreadyGuessed.length() > 3 && lexicon.getHash().contains(alreadyGuessed))) {
             return true;
         } else {
             return false;
@@ -44,10 +44,10 @@ public class Game {
         currentPlayer = newTurn;
     }
 
-    /* setGuesses: set the guessed word to the specified string
+    /* setAlreadyGuessed: set the guessed word to the specified string
      */
-    public void setGuesses(String newGuesses) {
-        guesses = newGuesses;
+    public void setAlreadyGuessed(String newAlreadyGuessed) {
+        alreadyGuessed = newAlreadyGuessed;
     }
 
     /* winner: returns the winner of the game
@@ -61,9 +61,9 @@ public class Game {
     public String endReason() {
         String reason = "";
         if (lexicon.count() == 0) {
-            reason = "no words found beginning with " + guesses;
-        } else if (lexicon.getHash().contains(guesses)) {
-            reason = guesses + " is a word";
+            reason = "no words found beginning with " + alreadyGuessed;
+        } else if (lexicon.getHash().contains(alreadyGuessed)) {
+            reason = alreadyGuessed + " is a word";
         }
         return reason;
     }
